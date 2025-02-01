@@ -1,0 +1,3 @@
+.env
+recipe-finder-frontend\recipe-finder\android\local.properties
+recipe-finder-frontend\recipe-finder\android\gradle.properties
