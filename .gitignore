@@ -1,3 +1,5 @@
 .env
 recipe-finder-frontend\recipe-finder\android\local.properties
 recipe-finder-frontend\recipe-finder\android\gradle.properties
+recipe-finder-frontend\recipe-finder\src\environments\environment.prod.ts
+recipe-finder-frontend\recipe-finder\src\environments\environment.ts

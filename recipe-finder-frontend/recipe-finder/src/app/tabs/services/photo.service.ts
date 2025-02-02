@@ -1,22 +1,25 @@
 import '@capacitor-community/http';
 
+
 import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem } from '@capacitor/filesystem';
 import { CapacitorHttp } from '@capacitor/core'
 export interface UserPhoto {
-  filepath: string; 
+  filepath: string;
   filename: string;
-  data: string; 
+  data: string;
 }
 @Injectable({
   providedIn: 'root'
 })
 
-export class PhotoService {
-  public photos: UserPhoto[] = []; 
 
+export class PhotoService {
+  public photos: UserPhoto[] = [];
+  siteUrl = "https://127.0.0.1:5000/photo"
   constructor() { }
+
 
   public async uriToBlob(uri: string) {
     const response = await fetch(uri);  // Fetch the image as a Blob
@@ -24,44 +27,56 @@ export class PhotoService {
     return blob;
   }
   public async addNewToGallery(): Promise <any>{
-    let response = ""; 
+    let response = "";
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
-      allowEditing: false, 
+      allowEditing: false,
       source: CameraSource.Camera,
       quality: 100
     })
-    
+   
     if(capturedPhoto) {
-      const formData = new FormData(); 
+      const formData = new FormData();
       const photoBlob = await this.uriToBlob(capturedPhoto.webPath!);
-      formData.append('file', photoBlob, 'photo.png'); 
-      formData.append('filename', 'bill.png'), 
+      formData.append('file', photoBlob, 'photo.png');
+      formData.append('filename', 'bill.png'),
       formData.append('filepath', capturedPhoto.webPath!)
-
-      response = await this.postImage(formData);
+      console.log("photo: " + formData);
+      try {
+        response = await this.postImage(formData);
+      } catch (error) {
+        console.log("Photo not sent");
+      }
+     
+    } else {
+      console.log("Photo not captured");
     }
-    return response; 
+    return response;
   }
 
+
+
+
   private async postImage(formData : FormData): Promise <any> {
-    const siteUrl = "http://127.0.0.1:5000/photo"
+   
     const options = {
-      url: siteUrl, 
-      headers: { "Content-Type": "multipart/form-data"}, 
+      url: this.siteUrl,
+      headers: { "Content-Type": "multipart/form-data"},
       data:formData
     }
+
 
     try {
       const response = await CapacitorHttp.post(options);
       const parsed_response = await JSON.parse(JSON.stringify(response.data));
-      return parsed_response; 
+      return parsed_response;
     } catch (error) {
       console.error("Error posting image:", error);
-      throw error; // Proper error handling if the POST request fails
+      throw error;
     }
       //console.log(response)
-    
+   
+
 
     /*let json_response = `[
       {
@@ -90,12 +105,8 @@ export class PhotoService {
         "recipe_name": "Chopped Parsley"
       }
     ]`*/
-    
+   
   }
 
+
 }
-
-
-
-
-

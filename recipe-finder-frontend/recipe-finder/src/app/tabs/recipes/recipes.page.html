@@ -1,16 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>my recipes</ion-title>
+    <ion-title class="top">my recipes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of lists">
-      <ion-label>{{item?.recipe_name}}</ion-label>
-      <p>{{item?.extra_ingredients}}</p>
-      <p>{{item?.recipe_instructions}}</p>
-      <ion-img [src] = "item?.imageUrl"></ion-img>
-    </ion-item>
+  <ion-loading trigger="open-loading" [duration]="5000" spinner="circles"></ion-loading>
+  <ion-list class="list">
+    <ion-card *ngFor="let item of lists" class="list">
+      <img alt="Silhouette of mountains" [src] = "item?.imageUrl" />
+      <ion-card-header class="list">
+        <ion-card-title class="title">{{item?.recipe_name}}</ion-card-title>
+        <ion-card-subtitle class="subtitle">{{item?.extra_ingredients}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="instructions">
+        {{item?.recipe_instructions}}
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>

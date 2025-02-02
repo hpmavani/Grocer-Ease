@@ -1,10 +1,37 @@
 ion-content{
     --ion-background-color:#FFFFFF;
-    --ion-background-image: url("/assets/images/background_food.jpg");
-    
 }
 
-.text{
-    font-size: medium;
+.list{
+    background-color:#FFFFFF;    
+}
+
+.top{
+    font-size: large;
+    font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+    font-weight: normal;
+    color: white;
+}
+
+.title{
+    font-size: large;
+    font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+    font-weight: normal;
     color: black;
+}
+
+.subtitle{
+    font-size: medium;
+    font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+    font-weight: normal;
+    color: black;
+
+}
+
+.instructions{
+    font-size: medium;
+    font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+    font-weight: normal;
+    color: black;
+
 }

@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="top">my home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <div class="description">
+      <h2 class="introduction">Welcome to GrocerEase!</h2>
+      <p class="title">Scroll through delicious and easy recipes below with the click of a camera! We are grocery shopping done with ease!</p>
+    </div>
+    <div class="logo">
+        <ion-img class="logo" src="/assets/images/grocery_icon.png"></ion-img>
+    </div>
+  </div>
+  <div class="scroll-container">
+    <ion-card *ngFor="let item of lists" class="list">
+      <div class="image-container">
+        <img alt="Recipe image" [src]="item?.imageUrl" />
+      </div>
+      <ion-card-header>
+        <ion-card-title class="title">{{ item?.name }}</ion-card-title>
+        <ion-card-subtitle class="subtitle">{{ item?.ingredients }}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>

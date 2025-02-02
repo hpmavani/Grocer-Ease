@@ -5,7 +5,7 @@ import { TabsPage } from './tabs/tabs.page';
 const routes: Routes = [
   {
     path: '', 
-    redirectTo: '/tabs/camera',
+    redirectTo: '/tabs/home',
     pathMatch: 'full', 
   }, 
   {
@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'favorites', 
         loadChildren: () => import('./tabs/favorites/favorites.module').then(m => m.FavoritesPageModule)
+      },
+      {
+        path: 'home', 
+        loadChildren: () => import('./tabs/home/home.module').then(m => m.HomePageModule)
       }
     ]
   },
