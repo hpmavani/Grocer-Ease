@@ -28,6 +28,8 @@ def index():
 @app.route('/photo', methods = ['POST'])
 def getImage():
     #if no file sent in request
+    print(request)
+    print(request.files)
     if 'file' not in request.files:
         return "no file sent", 404
    

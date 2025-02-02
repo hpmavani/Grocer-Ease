@@ -34,6 +34,7 @@ def parse_ingredients(image):
     model = genai.GenerativeModel(model_name="gemini-1.5-flash")
     prompt = "Parse all the grocery items/ingredients from this grocery store receipt."
     image_conv = Image.open(image)
+    #image_conv = Image.open("images/image.png")
     response = model.generate_content([image_conv, prompt])
     print(response)
     current_ingredients = response.text
