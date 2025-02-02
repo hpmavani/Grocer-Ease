@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'recipes', 
         loadChildren: () => import('./tabs/recipes/recipes.module').then(m => m.RecipesPageModule)
+      },
+      {
+        path: 'favorites', 
+        loadChildren: () => import('./tabs/favorites/favorites.module').then(m => m.FavoritesPageModule)
       }
     ]
   },

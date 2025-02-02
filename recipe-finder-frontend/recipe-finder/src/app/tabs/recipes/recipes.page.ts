@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesPage implements OnInit {
 
+    
+
   constructor() { }
 
   ngOnInit() {
