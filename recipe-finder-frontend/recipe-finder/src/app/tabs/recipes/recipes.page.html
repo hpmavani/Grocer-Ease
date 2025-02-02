@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-loading trigger="open-loading" [duration]="5000" spinner="circles"></ion-loading>
   <ion-list class="list">
     <ion-card *ngFor="let item of lists" class="list">
       <img alt="Silhouette of mountains" [src] = "item?.imageUrl" />

@@ -38,7 +38,7 @@ def getImage():
    
     recipes = gemini_api.get_recipe(image)
    
-    return "photo received", 200
+    return recipes, 200
    
 if __name__ == "__main__":
     app.run(host = "0.0.0.0")

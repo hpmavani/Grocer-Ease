@@ -17,7 +17,7 @@ export interface UserPhoto {
 
 export class PhotoService {
   public photos: UserPhoto[] = [];
-  siteUrl = "https://127.0.0.1:5000/photo"
+  siteUrl = "http://127.0.0.1:5000/photo"
   constructor() { }
 
 
@@ -34,20 +34,26 @@ export class PhotoService {
       source: CameraSource.Camera,
       quality: 100
     })
+
+    console.log("web path " + capturedPhoto.webPath!) 
+
    
     if(capturedPhoto) {
       const formData = new FormData();
       const photoBlob = await this.uriToBlob(capturedPhoto.webPath!);
-      formData.append('file', photoBlob, 'photo.png');
-      formData.append('filename', 'bill.png'),
-      formData.append('filepath', capturedPhoto.webPath!)
-      console.log("photo: " + formData);
-      try {
-        response = await this.postImage(formData);
-      } catch (error) {
-        console.log("Photo not sent");
+      if(photoBlob) {
+        formData.append('file', photoBlob, 'photo.png');
+        formData.append('filename', 'bill.png'),
+        formData.append('filepath', capturedPhoto.webPath!)
+        console.log("photo: " + formData);
+        try {
+          response = await this.postImage(formData);
+        } catch (error) {
+          console.log("Photo not sent");
+        }
+      } else {
+        console.log("Could not convert to blob"); 
       }
-     
     } else {
       console.log("Photo not captured");
     }
@@ -65,13 +71,16 @@ export class PhotoService {
       data:formData
     }
 
-
     try {
       const response = await CapacitorHttp.post(options);
-      const parsed_response = await JSON.parse(JSON.stringify(response.data));
-      return parsed_response;
+      try {
+        const parsed_response = await JSON.parse(JSON.stringify(response.data));
+        return parsed_response;
+      } catch (error2) {
+        console.log("Error parsinng: ", error2);
+      }
     } catch (error) {
-      console.error("Error posting image:", error);
+      console.log("Error posting image:", error);
       throw error;
     }
       //console.log(response)
