@@ -32,7 +32,6 @@ def getImage():
     print(filename)
     
     image = request.files['file']
-    image.save(FOLDER + filename)
     
     json_response = gemini_api.get_recipe(image)
     

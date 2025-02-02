@@ -30,7 +30,7 @@ generation_config = {"response_mime_type":"application/json"}
 def parse_ingredients(image):
     model = genai.GenerativeModel(model_name="gemini-1.5-flash")
     prompt = "Parse all the grocery items/ingredients from this grocery store receipt."
-    image = Image.open("C:/Users/hiyam/OneDrive/Documents/Source/hackathons/HackRUS2025/Recipe-Finder/recipe-finder-backend/image.png")
+    image = Image.open("recipe-finder-backend/image.png")
     response = model.generate_content([image, prompt])
     current_ingredients = response.text
     return current_ingredients

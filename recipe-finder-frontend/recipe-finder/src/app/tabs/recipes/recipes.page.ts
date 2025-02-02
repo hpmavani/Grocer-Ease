@@ -20,12 +20,13 @@ export class RecipesPage implements OnInit {
     console.log(navigation)
     console.log(navigation.response)
     this.recipes = navigation.response
-
-    for(let i = 0; i < this.recipes.length; i++) {
-      const imageUrl = await this.imageService.searchImage(this.recipes[i].recipe_name); 
-      this.recipes[i].imageUrl = imageUrl; 
+    if(this.recipes){
+      for(let i = 0; i < this.recipes.length; i++) {
+        const imageUrl = await this.imageService.searchImage(this.recipes[i].recipe_name); 
+        this.recipes[i].imageUrl = imageUrl; 
+      }
+      this.lists = [...this.recipes]
     }
-    this.lists = [...this.recipes]
   }
 
 }
