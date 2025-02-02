@@ -17,7 +17,7 @@ export interface UserPhoto {
 
 export class PhotoService {
   public photos: UserPhoto[] = [];
-  siteUrl = "http://127.0.0.1:5000/photo"
+  siteUrl = "https://hpmaav676.pythonanywhere.com/photo"
   constructor() { }
 
 
