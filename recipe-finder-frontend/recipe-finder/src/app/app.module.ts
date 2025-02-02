@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { TabsPageModule } from './tabs/tabs.module';
 
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, TabsPageModule],

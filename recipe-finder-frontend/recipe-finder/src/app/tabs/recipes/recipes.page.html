@@ -1,13 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recipes</ion-title>
+    <ion-title>Recipes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recipes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of lists">
+      <ion-label>{{item?.recipe_name}}</ion-label>
+      <p>{{item?.extra_ingredients}}</p>
+      <p>{{item?.recipe_instructions}}</p>
+      <ion-img [src] = "item?.imageUrl"></ion-img>
+    </ion-item>
+  </ion-list>
 </ion-content>
