@@ -5,7 +5,7 @@ import json
 import typing_extensions as typing
 from PIL import Image
 import re
-from collections import defaultdict
+
 
 
 
