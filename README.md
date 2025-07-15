@@ -1,5 +1,6 @@
 # GrocerEase - Receipt to Recipe with Gemini + Flask + Angular
 > A mobile application built at HackRU 2025 that scans grocery receipts, extracts ingredient names, and recommends personalized recipes based on users on-hand ingredients.
+> <br> **Collaborators**: Rithika Pathuri, Pearly Patel
 
 ## Features
 - Scan/Upload Receipts: Scans receipts using Capacitor Camera plugin or upload receipts using a file-picker.
